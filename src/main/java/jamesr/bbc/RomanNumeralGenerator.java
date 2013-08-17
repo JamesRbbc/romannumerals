@@ -27,7 +27,8 @@ public interface RomanNumeralGenerator {
 	 * Given an integer return a Roman numeral representation of that integer.
 	 * 
 	 * @param number
-	 *            the integer to represent as a Roman numeral.
+	 *            the integer to represent as a Roman numeral. Must be between 0
+	 *            and 3999.
 	 * @return the Roman numeral.
 	 */
 	public String generate(int number);
