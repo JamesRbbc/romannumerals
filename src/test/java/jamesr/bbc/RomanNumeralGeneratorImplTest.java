@@ -50,4 +50,9 @@ public class RomanNumeralGeneratorImplTest {
 	public void shouldReturnRomanTwo() {
 		verifyOutput(2, "II");
 	}
+
+	@Test
+	public void shouldReturnRomanThree() {
+		verifyOutput(3, "III");
+	}
 }
