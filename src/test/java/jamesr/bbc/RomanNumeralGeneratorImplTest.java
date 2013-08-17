@@ -4,10 +4,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class RomanNumeralGeneratorTest {
+public class RomanNumeralGeneratorImplTest {
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
+
+	private RomanNumeralGenerator testSubject = new RomanNumeralGeneratorImpl();
 
 	@Test
 	public void shouldNotAllowNumbersAbove3999() {
@@ -15,10 +17,17 @@ public class RomanNumeralGeneratorTest {
 		exception.expect(IllegalArgumentException.class);
 		exception.expectMessage("Values greater than 3999 are not accepted");
 
-		// Given
-		RomanNumeralGenerator testSubject = new RomanNumeralGeneratorImpl();
-
 		// When
 		testSubject.generate(4000);
+	}
+
+	@Test
+	public void shouldNotAllowNumbersZeroOrBelow() {
+		// Expect
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("Values must be greater than 0");
+
+		// When
+		testSubject.generate(0);
 	}
 }
