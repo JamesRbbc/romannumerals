@@ -19,19 +19,26 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
 
-		if (number <= 10) {
-			return formatTenNumber(number, 'I', 'V', 'X');
+		StringBuilder numeric = new StringBuilder();
+
+		numeric.append(formatTenNumber(number % 10, 'I', 'V', 'X'));
+
+		if (number >= 10) {
+			int tens = number / 10;
+			numeric.insert(0, formatTenNumber(tens % 10, 'X', 'L', 'C'));
 		}
 
-		if (number <= 100) {
-			return formatTenNumber(number / 10, 'X', 'L', 'C');
+		if (number >= 100) {
+			int hundreds = number / 100;
+			numeric.insert(0, formatTenNumber(hundreds % 10, 'C', 'D', 'M'));
 		}
 
-		if (number <= 1000) {
-			return formatTenNumber(number / 100, 'C', 'D', 'M');
+		if (number >= 1000) {
+			int thousands = number / 1000;
+			numeric.insert(0, formatTenNumber(thousands % 10, 'M', '-', '-'));
 		}
 
-		return formatTenNumber(number / 1000, 'M', '-', '-');
+		return numeric.toString();
 	}
 
 	/**
@@ -50,6 +57,8 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 	private String formatTenNumber(int number, char singleDigit,
 			char fiveDigit, char tenDigit) {
 		switch (number) {
+		case 0:
+			return "";
 		case 1:
 			return asString(singleDigit);
 		case 2:

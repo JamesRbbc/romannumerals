@@ -89,4 +89,13 @@ public class RomanNumeralGeneratorImplTest {
 		verifyOutput(2000, "MM");
 		verifyOutput(3000, "MMM");
 	}
+
+	@Test
+	public void shouldCombineNumbersNotMultpleOf10() {
+		// from wikipedia
+		verifyOutput(1954, "MCMLIV");
+		verifyOutput(1990, "MCMXC");
+		verifyOutput(2008, "MMVIII");
+		verifyOutput(47, "XLVII");
+	}
 }
