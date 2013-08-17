@@ -6,13 +6,33 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+/**
+ * Unit tests for {@link RomanNumeralGeneratorImpl}.
+ * 
+ * @author james
+ * 
+ */
 public class RomanNumeralGeneratorImplTest {
 
+	/**
+	 * Normally shouldn't throw an exception.
+	 */
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 
+	/**
+	 * The instance being tested.
+	 */
 	private RomanNumeralGenerator testSubject = new RomanNumeralGeneratorImpl();
 
+	/**
+	 * Used to verify the output of the test subject.
+	 * 
+	 * @param numberIn
+	 *            the integer to be generated into a Roman numeral.
+	 * @param expectedNumberOut
+	 *            the expected Roman numeral.
+	 */
 	private void verifyOutput(int numberIn, String expectedNumberOut) {
 		// When
 		String romanNumeral = testSubject.generate(numberIn);
@@ -97,5 +117,8 @@ public class RomanNumeralGeneratorImplTest {
 		verifyOutput(1990, "MCMXC");
 		verifyOutput(2008, "MMVIII");
 		verifyOutput(47, "XLVII");
+
+		// from exercise
+		verifyOutput(3999, "MMMCMXCIX");
 	}
 }
