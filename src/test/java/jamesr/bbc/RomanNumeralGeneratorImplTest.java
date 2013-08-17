@@ -1,5 +1,7 @@
 package jamesr.bbc;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -29,5 +31,14 @@ public class RomanNumeralGeneratorImplTest {
 
 		// When
 		testSubject.generate(0);
+	}
+
+	@Test
+	public void shouldReturnRomanOne() {
+		// When
+		String romanNumeral = testSubject.generate(1);
+
+		// Then
+		assertEquals("I", romanNumeral);
 	}
 }

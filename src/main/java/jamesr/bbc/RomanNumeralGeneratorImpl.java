@@ -13,9 +13,13 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 		if (number > 3999) {
 			throw new IllegalArgumentException(
 					"Values greater than 3999 are not accepted");
-		} else {
+		}
+
+		if (number <= 0) {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
+
+		return "I";
 	}
 
 }
