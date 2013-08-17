@@ -19,26 +19,41 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
 
-		StringBuilder numeric = new StringBuilder();
+		return formatNumberForBase(1000, number, 'M', '-', '-')
+				+ formatNumberForBase(100, number, 'C', 'D', 'M')
+				+ formatNumberForBase(10, number, 'X', 'L', 'C')
+				+ formatNumberForBase(0, number, 'I', 'V', 'X');
+	}
 
-		numeric.append(formatTenNumber(number % 10, 'I', 'V', 'X'));
+	/**
+	 * Formats a string for a given base.
+	 * 
+	 * @param base
+	 *            should be one of 0, 10, 100, 1000 and will handle results.
+	 * @param number
+	 *            the number to format
+	 * @param singleDigit
+	 *            the single digit representation
+	 * @param fiveDigit
+	 *            the five digits representation
+	 * @param tenDigit
+	 *            the ten digits representation
+	 * @return a formatted string
+	 */
+	private String formatNumberForBase(int base, int number, char singleDigit,
+			char fiveDigit, char tenDigit) {
 
-		if (number >= 10) {
-			int tens = number / 10;
-			numeric.insert(0, formatTenNumber(tens % 10, 'X', 'L', 'C'));
+		if (number >= base) {
+			int root = number;
+
+			if (base > 0) {
+				root = number / base;
+			}
+
+			return formatTenNumber(root % 10, singleDigit, fiveDigit, tenDigit);
 		}
 
-		if (number >= 100) {
-			int hundreds = number / 100;
-			numeric.insert(0, formatTenNumber(hundreds % 10, 'C', 'D', 'M'));
-		}
-
-		if (number >= 1000) {
-			int thousands = number / 1000;
-			numeric.insert(0, formatTenNumber(thousands % 10, 'M', '-', '-'));
-		}
-
-		return numeric.toString();
+		return "";
 	}
 
 	/**
