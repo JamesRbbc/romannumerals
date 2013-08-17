@@ -42,52 +42,16 @@ public class RomanNumeralGeneratorImplTest {
 	}
 
 	@Test
-	public void shouldReturnRomanOne() {
+	public void shouldHandleFirstTenNumbers() {
 		verifyOutput(1, "I");
-	}
-
-	@Test
-	public void shouldReturnRomanTwo() {
 		verifyOutput(2, "II");
-	}
-
-	@Test
-	public void shouldReturnRomanThree() {
 		verifyOutput(3, "III");
-	}
-
-	@Test
-	public void shouldReturnRomanFour() {
 		verifyOutput(4, "IV");
-	}
-
-	@Test
-	public void shouldReturnRomanFive() {
 		verifyOutput(5, "V");
-	}
-
-	@Test
-	public void shouldReturnRomanSix() {
 		verifyOutput(6, "VI");
-	}
-
-	@Test
-	public void shouldReturnRomanSeven() {
 		verifyOutput(7, "VII");
-	}
-
-	@Test
-	public void shouldReturnRomanEight() {
 		verifyOutput(8, "VIII");
-	}
-
-	@Test
-	public void shouldReturnRomanNine() {
 		verifyOutput(9, "IX");
-	}
-
-	@Test
-	public void shouldReturnRomanTen() {
 		verifyOutput(10, "X");
 	}
 }
