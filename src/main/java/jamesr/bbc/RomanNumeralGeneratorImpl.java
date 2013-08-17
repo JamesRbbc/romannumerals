@@ -19,29 +19,63 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
 
+		if (number <= 10) {
+			return formatTenNumber(number, 'I', 'V', 'X');
+		}
+
+		return formatTenNumber(number / 10, 'X', 'L', 'C');
+	}
+
+	/**
+	 * Deals with formating a set of numbers that are multiples of ten. For
+	 * example formatTenNumber(number, "I", "V", "X"); where number goes from 1
+	 * to 10 will return I, II, III, IV, V, VI, VII, VIII, IX, X.
+	 * 
+	 * @param number
+	 *            a number between 1 and ten to format
+	 * @param singleDigit
+	 *            the
+	 * @param fiveDigit
+	 * @param tenDigit
+	 * @return the formatted Roman number
+	 */
+	private String formatTenNumber(int number, char singleDigit,
+			char fiveDigit, char tenDigit) {
 		switch (number) {
 		case 1:
-			return "I";
+			return asString(singleDigit);
 		case 2:
-			return "II";
+			return asString(singleDigit, singleDigit);
 		case 3:
-			return "III";
+			return asString(singleDigit, singleDigit, singleDigit);
 		case 4:
-			return "IV";
+			return asString(singleDigit, fiveDigit);
 		case 5:
-			return "V";
+			return asString(fiveDigit);
 		case 6:
-			return "VI";
+			return asString(fiveDigit, singleDigit);
 		case 7:
-			return "VII";
+			return asString(fiveDigit, singleDigit, singleDigit);
 		case 8:
-			return "VIII";
+			return asString(fiveDigit, singleDigit, singleDigit, singleDigit);
 		case 9:
-			return "IX";
+			return asString(singleDigit, tenDigit);
 		case 10:
-			return "X";
+			return asString(tenDigit);
 		default:
-			return null;
+			throw new IllegalArgumentException(
+					"Method only formats numbers between 1 and 10.");
 		}
+	}
+
+	/**
+	 * Returns a string built from the given chars.
+	 * 
+	 * @param chars
+	 *            the chars to create a string from
+	 * @return the required string
+	 */
+	private String asString(char... chars) {
+		return new String(chars);
 	}
 }

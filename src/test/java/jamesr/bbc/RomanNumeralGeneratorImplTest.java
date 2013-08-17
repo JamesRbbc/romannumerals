@@ -54,4 +54,18 @@ public class RomanNumeralGeneratorImplTest {
 		verifyOutput(9, "IX");
 		verifyOutput(10, "X");
 	}
+
+	@Test
+	public void shouldHandleMultiplesOfTen() {
+		verifyOutput(10, "X");
+		verifyOutput(20, "XX");
+		verifyOutput(30, "XXX");
+		verifyOutput(40, "XL");
+		verifyOutput(50, "L");
+		verifyOutput(60, "LX");
+		verifyOutput(70, "LXX");
+		verifyOutput(80, "LXXX");
+		verifyOutput(90, "XC");
+		verifyOutput(100, "C");
+	}
 }
