@@ -68,4 +68,25 @@ public class RomanNumeralGeneratorImplTest {
 		verifyOutput(90, "XC");
 		verifyOutput(100, "C");
 	}
+
+	@Test
+	public void shouldHandleMultiplesOfHundred() {
+		verifyOutput(100, "C");
+		verifyOutput(200, "CC");
+		verifyOutput(300, "CCC");
+		verifyOutput(400, "CD");
+		verifyOutput(500, "D");
+		verifyOutput(600, "DC");
+		verifyOutput(700, "DCC");
+		verifyOutput(800, "DCCC");
+		verifyOutput(900, "CM");
+		verifyOutput(1000, "M");
+	}
+
+	@Test
+	public void shouldHandleMultiplesOfThousand() {
+		verifyOutput(1000, "M");
+		verifyOutput(2000, "MM");
+		verifyOutput(3000, "MMM");
+	}
 }

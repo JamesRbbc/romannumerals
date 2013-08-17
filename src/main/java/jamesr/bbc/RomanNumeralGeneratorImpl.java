@@ -23,7 +23,15 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			return formatTenNumber(number, 'I', 'V', 'X');
 		}
 
-		return formatTenNumber(number / 10, 'X', 'L', 'C');
+		if (number <= 100) {
+			return formatTenNumber(number / 10, 'X', 'L', 'C');
+		}
+
+		if (number <= 1000) {
+			return formatTenNumber(number / 100, 'C', 'D', 'M');
+		}
+
+		return formatTenNumber(number / 1000, 'M', '-', '-');
 	}
 
 	/**
