@@ -19,7 +19,13 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
 
-		return "I";
+		switch (number) {
+		case 1:
+			return "I";
+		case 2:
+			return "II";
+		default:
+			return null;
+		}
 	}
-
 }

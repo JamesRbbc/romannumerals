@@ -13,6 +13,14 @@ public class RomanNumeralGeneratorImplTest {
 
 	private RomanNumeralGenerator testSubject = new RomanNumeralGeneratorImpl();
 
+	private void verifyOutput(int numberIn, String expectedNumberOut) {
+		// When
+		String romanNumeral = testSubject.generate(numberIn);
+
+		// Then
+		assertEquals(expectedNumberOut, romanNumeral);
+	}
+
 	@Test
 	public void shouldNotAllowNumbersAbove3999() {
 		// Expect
@@ -35,10 +43,11 @@ public class RomanNumeralGeneratorImplTest {
 
 	@Test
 	public void shouldReturnRomanOne() {
-		// When
-		String romanNumeral = testSubject.generate(1);
+		verifyOutput(1, "I");
+	}
 
-		// Then
-		assertEquals("I", romanNumeral);
+	@Test
+	public void shouldReturnRomanTwo() {
+		verifyOutput(2, "II");
 	}
 }
