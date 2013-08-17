@@ -4,10 +4,10 @@ Roman Numerals by James Richardson
 Approach:
 ---------
 1. Firstly, handled the upper and lower bounds to make rest of problem easier to solve.
-1. Secondly solved problem for numbers from 1 to 10
-1. Next noticed pattern that repeats itself for numbers 10 to 100 and 100 to 1000, so produced code to handle this pattern
-1. Then all that was left was to handle adding sets of numbers together
-1. Finally I had constants left through the code, so I pulled these into an enum.  It seemed best to take associated methods too.
+2. Secondly solved problem for numbers from 1 to 10
+3. Next noticed pattern that repeats itself for numbers 10 to 100 and 100 to 1000, so produced code to handle this pattern
+4. Then all that was left was to handle adding sets of numbers together
+5. Finally I had constants left through the code, so I pulled these into an enum.  It seemed best to take associated methods too.
 
 Assumptions:
 ------------
