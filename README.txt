@@ -17,3 +17,4 @@ Work Remaining:
 ---------------
 * With the extraction of the enum, various tests could be added here now.  This would simplify tests around the generator.
 * The THOUSANDS part of the enum does not handle 'out of bounds' if numbers of 4000 or larger are given.
+* This actually deals with multiples of ten, the problem could be made a lot easier if dealing with multiples of five
