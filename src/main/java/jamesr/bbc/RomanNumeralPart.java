@@ -50,16 +50,31 @@ public enum RomanNumeralPart {
 	String format(int number) {
 
 		if (number >= base) {
-			int root = number;
-
-			if (base > 0) {
-				root = number / base;
-			}
-
-			return doFormat(root % 10);
+			return doFormat(toRoot(number));
 		}
 
 		return "";
+	}
+
+	/**
+	 * Converts the number X into (x / base) % base for working out the tenth
+	 * digit.
+	 * 
+	 * The root can then be used to find the correct set of digits to represent
+	 * this number.
+	 * 
+	 * @param number
+	 *            the number whose root is required
+	 * @return the root
+	 */
+	private int toRoot(int number) {
+		int root = number;
+
+		if (base > 0) {
+			root = number / base;
+		}
+
+		return root % 10;
 	}
 
 	/**
