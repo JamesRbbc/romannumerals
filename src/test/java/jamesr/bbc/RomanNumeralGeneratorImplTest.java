@@ -55,4 +55,14 @@ public class RomanNumeralGeneratorImplTest {
 	public void shouldReturnRomanThree() {
 		verifyOutput(3, "III");
 	}
+
+	@Test
+	public void shouldReturnRomanFour() {
+		verifyOutput(4, "IV");
+	}
+
+	@Test
+	public void shouldReturnRomanFive() {
+		verifyOutput(5, "V");
+	}
 }
