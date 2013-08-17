@@ -19,6 +19,10 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
 			throw new IllegalArgumentException("Values must be greater than 0");
 		}
 
+		//
+		// This adds the parts that represent thousands + hundreds + tens +
+		// single digits into a single number representation.
+		//
 		return RomanNumeralPart.THOUSANDS.format(number)
 				+ RomanNumeralPart.HUNDREDS.format(number)
 				+ RomanNumeralPart.TENS.format(number)

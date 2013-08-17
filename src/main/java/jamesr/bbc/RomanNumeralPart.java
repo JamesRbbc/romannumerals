@@ -31,6 +31,21 @@ public enum RomanNumeralPart {
 	private final char fiveDigit;
 	private final char tenDigit;
 
+	/**
+	 * Create the enum value.
+	 * 
+	 * @param base
+	 *            the base this part represents (e.g. 0s, 10s, 100s etc)
+	 * @param single
+	 *            the character that represents a single part (e.g. a 1 or a 10
+	 *            or a 100)
+	 * @param five
+	 *            the character that represents a five parts (e.g. a 5 or a 50
+	 *            or a 500)
+	 * @param ten
+	 *            the character that represents a ten parts (e.g. a 10 or a 100
+	 *            or a 1000)
+	 */
 	private RomanNumeralPart(int base, char single, char five, char ten) {
 		this.base = base;
 		this.singleDigit = single;
@@ -39,10 +54,8 @@ public enum RomanNumeralPart {
 	}
 
 	/**
-	 * Formats a string for a given base.
+	 * Formats a number for this part of the Roman numeral.
 	 * 
-	 * @param partToFormat
-	 *            The part of the Roman numeral to be formatted
 	 * @param number
 	 *            the number to format
 	 * @return a formatted string
@@ -57,11 +70,18 @@ public enum RomanNumeralPart {
 	}
 
 	/**
-	 * Converts the number X into (x / base) % base for working out the tenth
-	 * digit.
+	 * Converts the number X into "(x / base) % 10" for working out the (Y *
+	 * 10)th digit.
 	 * 
 	 * The root can then be used to find the correct set of digits to represent
 	 * this number.
+	 * 
+	 * e.g. <code>
+	 * SINGLE.toRoot(12345) => 5
+	 * TENS.toRoot(12345) => 4
+	 * HUNDREDS.toRoot(12345) => 3
+	 * THOUSANDS.toRoot(12345) => 2
+	 * </code>
 	 * 
 	 * @param number
 	 *            the number whose root is required
@@ -79,15 +99,11 @@ public enum RomanNumeralPart {
 
 	/**
 	 * Deals with formating a set of numbers that are multiples of ten. For
-	 * example formatTenNumber(number, "I", "V", "X"); where number goes from 1
-	 * to 10 will return I, II, III, IV, V, VI, VII, VIII, IX, X.
+	 * example SINGLE.formatTenNumber(number); where number goes from 1 to 10
+	 * will return I, II, III, IV, V, VI, VII, VIII, IX, X.
 	 * 
 	 * @param number
-	 *            a number between 1 and ten to format
-	 * @param singleDigit
-	 *            the
-	 * @param fiveDigit
-	 * @param tenDigit
+	 *            a number between 0 and ten to format
 	 * @return the formatted Roman number
 	 */
 	private String doFormat(int number) {
